@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="logging-interceptor-2.6.0-20151026.214724-15">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/logging-interceptor-2.6.0-20151026.214724-15.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

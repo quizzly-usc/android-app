@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#990000</color>
+    <color name="colorPrimaryDark">#800000</color>
+    <color name="colorWarning">#505050</color>
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="titleTextColor">#FFFFFF</color>
+    <color name="actionMenuTextColor">#212121</color>
+    <color name="accent">#FFCC00</color>
+
+    <color name="white">#FFFFFF</color>
+
+    <color name="cardBackground">#FFFFFF</color>
+
+    <color name="currentClassTitle">#212121</color>
+    <color name="currentClassSubtitle">#505050</color>
+
+    <color name="status_text">#FFFFFF</color>
+    <color name="message_text">#FFFFFF</color>
+
+    <color name="my_classes_primary">#212121</color>
+    <color name="my_classes_secondary">#505050</color>
+</resources>
