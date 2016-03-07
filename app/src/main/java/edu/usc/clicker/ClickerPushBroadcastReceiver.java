@@ -7,8 +7,10 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.provider.SyncStateContract;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.NotificationCompat;
+import android.util.Log;
 
 import com.parse.ParsePushBroadcastReceiver;
 
@@ -29,6 +31,7 @@ public class ClickerPushBroadcastReceiver extends ParsePushBroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
+        Log.d("on receive", "on receive");
 
         if (intent.getAction().equals(ClickerApplication.DISCONNECT_ACTION)) {
             ClickerApplication.disableAutoLaunch();
@@ -47,6 +50,7 @@ public class ClickerPushBroadcastReceiver extends ParsePushBroadcastReceiver {
     @Override
     protected void onPushReceive(Context context, Intent intent) {
         super.onPushReceive(context, intent);
+        Log.d("on push receive", "on push receive");
 
         if (!ClickerApplication.LOGIN_HELPER.isLoggedIn(context)) {
             return;

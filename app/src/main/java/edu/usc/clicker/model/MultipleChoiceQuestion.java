@@ -1,5 +1,6 @@
 package edu.usc.clicker.model;
 
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -106,6 +107,22 @@ public class MultipleChoiceQuestion implements Parcelable {
     }
 
     public MultipleChoiceQuestion() {
+    }
+
+    public MultipleChoiceQuestion(Bundle b) {
+        this.id = 1;
+        this.answer = "yo";
+        List<String> choices = new ArrayList<String>();
+        choices.add("yo");
+        choices.add("hi");
+        this.choices = choices;
+        this.pushHash = "some hash";
+        this.question = "Hi or Yo?";
+        this.expiration = 1457402316;
+        this.timeLimit = 50000;
+        this.type = "multiple-choice";
+        this.showAnswers = true;
+        this.quizID = 1;
     }
 
     protected MultipleChoiceQuestion(Parcel in) {

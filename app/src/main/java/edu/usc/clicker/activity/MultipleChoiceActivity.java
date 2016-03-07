@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
@@ -60,16 +61,20 @@ public class MultipleChoiceActivity extends ResponseActivity implements Timer.Ti
         timerView = (TimerView) findViewById(R.id.timeRemaining);
         questionText = (TextView) findViewById(R.id.question);
 
+        Log.i("mult-choice create", "begin");
         if (question != null) {
+            Log.i("mult-choice create", "set question");
+            Log.i("multi-choice q", question.getQuestion());
             setQuestion(question);
         }
-
+        Log.i("mult-choice create", "end");
         ClickerApplication.getLocationHelper().setTrackLocation(true);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Log.i("mult-choice destroy", "why");
         ClickerApplication.getLocationHelper().setTrackLocation(false);
     }
 
@@ -93,6 +98,7 @@ public class MultipleChoiceActivity extends ResponseActivity implements Timer.Ti
         }
 
         vibrator.vibrate(1000);
+        Log.i("mult-choice set q", "did it get here?");
     }
 
     private void rippleTimeRemaining() {

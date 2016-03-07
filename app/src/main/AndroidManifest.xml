@@ -68,16 +68,16 @@
             android:label="@string/foss_title"
             android:theme="@style/FOSSTheme" />
 
-        <service android:name="com.parse.PushService" />
-
-        <receiver
-            android:name=".ClickerPushBroadcastReceiver"
+        <receiver android:name=".UrbanAirshipReceiver"
             android:exported="false">
+
             <intent-filter>
-                <action android:name="edu.usc.clicker.ClickerApplication.DISCONNECT_ACTION" />
-                <action android:name="com.parse.push.intent.RECEIVE" />
-                <action android:name="com.parse.push.intent.DELETE" />
-                <action android:name="com.parse.push.intent.OPEN" />
+                <action android:name="com.urbanairship.push.CHANNEL_UPDATED" />
+                <action android:name="com.urbanairship.push.OPENED" />
+                <action android:name="com.urbanairship.push.RECEIVED" />
+                <action android:name="com.urbanairship.push.DISMISSED" />
+
+                <category android:name="${applicationId}" />
             </intent-filter>
         </receiver>
         <receiver
