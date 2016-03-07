@@ -67,10 +67,9 @@
             android:name=".activity.FOSSActivity"
             android:label="@string/foss_title"
             android:theme="@style/FOSSTheme" />
-
-        <receiver android:name=".UrbanAirshipReceiver"
+        <receiver
+            android:name=".UrbanAirshipReceiver"
             android:exported="false">
-
             <intent-filter>
                 <action android:name="com.urbanairship.push.CHANNEL_UPDATED" />
                 <action android:name="com.urbanairship.push.OPENED" />
@@ -94,6 +93,11 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="25febbede09b705740c53a76cb92c1610b32ebc2" />
+
+        <activity
+            android:name=".activity.DummyActivity"
+            android:label="@string/title_activity_dummy"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

@@ -42,7 +42,7 @@ public class MultipleChoiceActivity extends ResponseActivity implements Timer.Ti
     public static Intent getIntent(Context context, MultipleChoiceQuestion question) {
         Intent intent = new Intent(context, MultipleChoiceActivity.class);
         intent.putExtra("question", question);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         return intent;
     }
 
@@ -79,7 +79,7 @@ public class MultipleChoiceActivity extends ResponseActivity implements Timer.Ti
     }
 
     private void setQuestion(MultipleChoiceQuestion question) {
-        content.setAlpha(0.0f);
+        content.setAlpha(1.0f);
         content.setTranslationY(getResources().getDisplayMetrics().heightPixels);
 
         questionText.setText(question.getQuestion());
@@ -90,14 +90,14 @@ public class MultipleChoiceActivity extends ResponseActivity implements Timer.Ti
 
         timerView.setListener(this);
 
-        int maxTime = (int) ((question.getExpiration() - System.currentTimeMillis())/1000L);
+    /*    int maxTime = (int) ((question.getExpiration() - System.currentTimeMillis())/1000L);
         if (maxTime < question.getTimeLimit()/1000L) {
             timerView.start((int) ((question.getExpiration() - System.currentTimeMillis()) / 1000L));
         } else {
             timerView.start((int) (question.getTimeLimit()/1000L));
         }
 
-        vibrator.vibrate(1000);
+        vibrator.vibrate(1000);*/
         Log.i("mult-choice set q", "did it get here?");
     }
 

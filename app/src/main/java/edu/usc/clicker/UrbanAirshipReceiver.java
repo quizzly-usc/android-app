@@ -1,6 +1,7 @@
 package edu.usc.clicker;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -9,6 +10,8 @@ import com.urbanairship.push.PushMessage;
 
 import org.json.JSONObject;
 
+import edu.usc.clicker.activity.DummyActivity;
+import edu.usc.clicker.activity.MainActivity;
 import edu.usc.clicker.activity.MultipleChoiceActivity;
 import edu.usc.clicker.model.MultipleChoiceQuestion;
 
@@ -40,9 +43,14 @@ public class UrbanAirshipReceiver extends BaseIntentReceiver {
     protected void onBackgroundPushReceived(Context context, PushMessage message) {
         Log.i(TAG, "Received background push message: " + message);
         Log.i("background question", message.getPushBundle().getString("question"));
+
         Bundle b = message.getPushBundle();
         MultipleChoiceQuestion question = new MultipleChoiceQuestion(b); //populates question with data
         MultipleChoiceActivity.start(context, question); //start activity
+        /*Intent i = new Intent();
+        i.setClassName("com.test", "com.test.MainActivity");
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(i);*/
     }
 
     @Override
@@ -59,6 +67,7 @@ public class UrbanAirshipReceiver extends BaseIntentReceiver {
         try {
             MultipleChoiceQuestion question = new MultipleChoiceQuestion(b);
             MultipleChoiceActivity.start(context, question);
+            return true;
         }
         catch (Exception e) {
             Log.e("error", e.getMessage());
