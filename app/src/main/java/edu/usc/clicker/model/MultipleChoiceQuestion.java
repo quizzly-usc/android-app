@@ -120,19 +120,29 @@ public class MultipleChoiceQuestion implements Parcelable {
     }
 
     public MultipleChoiceQuestion(Bundle b) {
-        this.id = 1;
+        //dont think we need answer
         this.answer = "yo";
+
+        //Data from question
+        this.question = b.getString("question");
+        this.type = b.getString("type");
+        this.quizID = Integer.parseInt(b.getString("quiz_id"));
+        this.id = Integer.parseInt(b.getString("quest_id"));
+
+        //Data from possible answers
         List<String> choices = new ArrayList<String>();
-        choices.add("yo");
-        choices.add("hi");
+        choices.add(b.getString("answer0"));
+        choices.add(b.getString("answer1"));
+        choices.add(b.getString("answer2"));
+        choices.add(b.getString("answer3"));
         this.choices = choices;
-        this.pushHash = "some hash";
-        this.question = "Hi or Yo?";
-        this.expiration = 1457402316;
+
+        //random data - not sure if we need
+        this.expiration = 1467402316;
         this.timeLimit = 50000;
-        this.type = "multiple-choice";
+        this.pushHash = "some hash";
         this.showAnswers = true;
-        this.quizID = 1;
+
     }
 
     protected MultipleChoiceQuestion(Parcel in) {
@@ -166,7 +176,7 @@ public class MultipleChoiceQuestion implements Parcelable {
         }) {
             protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("quest_id", "" + answer.getAnswer());
+                params.put("quest_id", "" + answer.getQuestionId());
                 params.put("answer", answer.getAnswer());
                 params.put("user", answer.getUser());
                 params.put("quiz_id", "" + answer.getQuizId());
