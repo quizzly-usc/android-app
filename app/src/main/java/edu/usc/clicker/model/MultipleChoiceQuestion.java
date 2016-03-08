@@ -152,7 +152,7 @@ public class MultipleChoiceQuestion implements Parcelable {
         RequestQueue queue = Volley.newRequestQueue(context);
         String url = String.format("http://localhost:1337/question/answer?qid=%1$d&question=%2$s", 1, "hi");
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 // Display the first 500 characters of the response string.
@@ -166,7 +166,7 @@ public class MultipleChoiceQuestion implements Parcelable {
         }) {
             protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("quest_id", "" + answer.getQuestionId());
+                params.put("quest_id", "" + answer.getAnswer());
                 params.put("answer", answer.getAnswer());
                 params.put("user", answer.getUser());
                 params.put("quiz_id", "" + answer.getQuizId());
