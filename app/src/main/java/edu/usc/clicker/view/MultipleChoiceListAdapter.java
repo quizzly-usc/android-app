@@ -2,10 +2,16 @@ package edu.usc.clicker.view;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.squareup.okhttp.ResponseBody;
 
 import edu.usc.clicker.ClickerApplication;
@@ -81,6 +87,7 @@ public class MultipleChoiceListAdapter extends RecyclerView.Adapter<MultipleChoi
         }
         answerResponse.setQuizId(question.getQuizID());
 
-        ClickerApplication.CLICKER_API.answer(answerResponse).enqueue(this);
+        //ClickerApplication.CLICKER_API.answer(answerResponse).enqueue(this);
+        MultipleChoiceQuestion.answerQuestion(context, answerResponse);
     }
 }
