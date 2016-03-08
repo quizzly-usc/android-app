@@ -90,14 +90,15 @@ public class MultipleChoiceActivity extends ResponseActivity implements Timer.Ti
 
         timerView.setListener(this);
 
-    /*    int maxTime = (int) ((question.getExpiration() - System.currentTimeMillis())/1000L);
+        int maxTime = (int) ((question.getExpiration() - System.currentTimeMillis()/1000L));
         if (maxTime < question.getTimeLimit()/1000L) {
             timerView.start((int) ((question.getExpiration() - System.currentTimeMillis()) / 1000L));
         } else {
             timerView.start((int) (question.getTimeLimit()/1000L));
+            Log.i("Timer value1: ", ""+question.getTimeLimit());
         }
 
-        vibrator.vibrate(1000);*/
+        vibrator.vibrate(1000);
         Log.i("mult-choice set q", "did it get here?");
     }
 
