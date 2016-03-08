@@ -1,6 +1,7 @@
 package edu.usc.clicker.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import com.squareup.okhttp.ResponseBody;
 
 import edu.usc.clicker.ClickerApplication;
 import edu.usc.clicker.R;
+import edu.usc.clicker.activity.MainActivity;
 import edu.usc.clicker.model.AnswerResponse;
 import edu.usc.clicker.model.MultipleChoiceQuestion;
 import edu.usc.clicker.util.ClickerLog;
@@ -89,5 +91,8 @@ public class MultipleChoiceListAdapter extends RecyclerView.Adapter<MultipleChoi
 
         //ClickerApplication.CLICKER_API.answer(answerResponse).enqueue(this);
         MultipleChoiceQuestion.answerQuestion(context, answerResponse);
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(intent);
     }
 }
