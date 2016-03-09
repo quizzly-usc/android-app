@@ -133,8 +133,16 @@ public class MultipleChoiceQuestion implements Parcelable {
         List<String> choices = new ArrayList<String>();
         choices.add(b.getString("answer0"));
         choices.add(b.getString("answer1"));
-        choices.add(b.getString("answer2"));
-        choices.add(b.getString("answer3"));
+
+        if(b.getString("answer2") != null) {
+            choices.add(b.getString("answer2"));
+
+            if(b.getString("answer3") != null) {
+                choices.add(b.getString("answer3"));
+            }
+        }
+
+
         this.choices = choices;
 
         //random data - not sure if we need
@@ -178,7 +186,7 @@ public class MultipleChoiceQuestion implements Parcelable {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("quest_id", "" + answer.getQuestionId());
                 params.put("answer", answer.getAnswer());
-                params.put("user", answer.getUser());
+                params.put("user_email", answer.getUser());
                 params.put("quiz_id", "" + answer.getQuizId());
                 return params;
             };
