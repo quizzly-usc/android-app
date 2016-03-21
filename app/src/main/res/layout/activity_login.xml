@@ -19,7 +19,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login_title"
+            android:textSize="50sp"
             android:id="@+id/title"
+            android:layout_gravity="center"
             style="@style/Base.TextAppearance.AppCompat.Display1"
             android:textColor="@color/textColorPrimary"
             android:layout_marginBottom="8dp" />
@@ -29,10 +31,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login_description"
+            android:textStyle="italic"
             android:id="@+id/description"
             android:textColor="@color/textColorPrimary"
+            android:textSize="20sp"
+            android:gravity="center"
             android:nextFocusDown="@+id/password"
             android:layout_marginBottom="8dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2" />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/emailTIL"
@@ -44,6 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
+                android:gravity="center"
                 android:textColor="@color/textColorPrimary"
                 android:textColorHint="@color/textColorPrimary"
                 android:hint="@string/email"
@@ -62,6 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
+                android:gravity="center"
                 android:textColor="@color/textColorPrimary"
                 android:textColorHint="@color/textColorPrimary"
                 android:hint="@string/password"
@@ -92,15 +104,14 @@
             android:layout_height="wrap_content"
             android:id="@+id/progressBar"
             android:layout_gravity="center" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:layout_gravity="center" />
     </FrameLayout>
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:title="@string/app_name"
-        app:title="@string/app_name"
-        android:layout_gravity="top"
-        android:visibility="visible" />
+
 
 </FrameLayout>

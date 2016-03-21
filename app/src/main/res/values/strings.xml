@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Clicker</string>
+    <string name="app_name">Quizzly</string>
     <string name="my_classes_title">My Classes</string>
     <string name="statistics_title">Statistics</string>
 
@@ -13,8 +13,8 @@
     <string name="welcome_description">To use Clicker, you need a Clicker account. You can either create an account or login with an existing one.</string>
     <string name="welcome_new_account">CREATE AN ACCOUNT</string>
     <string name="welcome_login">LOGIN</string>
-    <string name="login_title">Login with your Clicker account</string>
-    <string name="login_description">Clicker needs you to login to get your courses and quizzes.</string>
+    <string name="login_title">Quizzly</string>
+    <string name="login_description">The scholastic environment where clickers do not exist</string>
     <string name="bad_login">Invalid username or password.</string>
     <string name="login_error">An error occurred while logging in. Please try again.</string>
 
