@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="edu.usc.clicker.activity.MultipleChoiceActivity"
-    android:background="@color/colorPrimary" >
+    android:background="@drawable/main_background_color" >
 
     <FrameLayout
         android:id="@+id/toolbar"

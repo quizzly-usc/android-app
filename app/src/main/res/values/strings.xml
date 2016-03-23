@@ -3,14 +3,14 @@
     <string name="my_classes_title">My Classes</string>
     <string name="statistics_title">Statistics</string>
 
-    <string name="app_running">Clicker will auto-launch when you\'re quizzed.</string>
+    <string name="app_running">Quizzly will auto-launch when you\'re quizzed.</string>
     <string name="disconnect">Disable auto-launch</string>
 
     <string name="email">USC email</string>
     <string name="password">Password</string>
 
-    <string name="welcome_title">Welcome to Clicker</string>
-    <string name="welcome_description">To use Clicker, you need a Clicker account. You can either create an account or login with an existing one.</string>
+    <string name="welcome_title">Welcome to Quizzly</string>
+    <string name="welcome_description">To use Quizzly, you need a Quizzly account. You can either create an account or login with an existing one.</string>
     <string name="welcome_new_account">CREATE AN ACCOUNT</string>
     <string name="welcome_login">LOGIN</string>
     <string name="login_title">Quizzly</string>
@@ -18,13 +18,13 @@
     <string name="bad_login">Invalid username or password.</string>
     <string name="login_error">An error occurred while logging in. Please try again.</string>
 
-    <string name="permissions_request_title">Clicker needs your location</string>
-    <string name="permissions_request_message">Clicker needs access to your location in order to verify presence in class. Make sure to allow access to ensure that your answers are properly recorded.</string>
+    <string name="permissions_request_title">Quizzly needs your location</string>
+    <string name="permissions_request_message">Quizzly needs access to your location in order to verify presence in class. Make sure to allow access to ensure that your answers are properly recorded.</string>
     <string name="permissions_request_ok">OK</string>
 
     <string name="status_no_location">Getting location…</string>
-    <string name="message_no_location">Clicker is getting your location to verify presence in class.</string>
-    <string name="status_connected">Clicker is connected!</string>
+    <string name="message_no_location">Quizzly is getting your location to verify presence in class.</string>
+    <string name="status_connected">Quizzly is connected!</string>
     <string name="message_connected">You can turn off your screen.\nDon\'t worry, your device will vibrate when a question is asked.</string>
 
     <string name="my_classes">MY CLASSES</string>

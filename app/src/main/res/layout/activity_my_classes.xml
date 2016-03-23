@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_background_color"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -20,7 +21,7 @@
         android:layout_gravity="top"
         app:title="@string/my_classes_title"
         android:title="@string/my_classes_title"
-        android:background="@color/colorPrimary" />
+        android:background="@drawable/main_background_color" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -29,7 +30,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:src="@drawable/ic_add_white_24dp"
-        app:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="@drawable/main_background_color"
         app:fabSize="normal" />
 
 </FrameLayout>
