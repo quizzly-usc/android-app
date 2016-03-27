@@ -37,6 +37,9 @@ public class UrbanAirshipReceiver extends BaseIntentReceiver {
         Log.i(TAG, "Received push notification. Alert: " + message.getAlert() + ". Notification ID: " + notificationId);
         Log.i("regular question", message.getPushBundle().getString("question"));
 
+        Bundle b = message.getPushBundle();
+        MultipleChoiceQuestion question = new MultipleChoiceQuestion(b); //populates question with data
+        MultipleChoiceActivity.start(context, question); //start activity
     }
 
     @Override
