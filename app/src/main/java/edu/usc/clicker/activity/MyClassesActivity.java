@@ -103,8 +103,8 @@ public class MyClassesActivity extends AppCompatActivity implements View.OnClick
         Snackbar.make(findViewById(android.R.id.content), R.string.addClassNetworkFailure, Snackbar.LENGTH_LONG).show();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+   @Override
+   public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.

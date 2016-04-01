@@ -52,6 +52,7 @@ public class StatisticsActivity extends AppCompatActivity {
         }
 
         StatisticsListView listView = (StatisticsListView) findViewById(R.id.listView);
-        listView.setSection(Integer.parseInt(section.getSectionID()));
+
+        listView.setSection(Integer.parseInt(section.getInstructor()));
     }
 }

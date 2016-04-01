@@ -32,7 +32,7 @@ public class MyClassesListView extends ListView implements AdapterView.OnItemCli
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        StatisticsActivity.start(getContext(), ((MyClassesAdapter) getAdapter()).getItem(position));
+       //StatisticsActivity.start(getContext(), ((MyClassesAdapter) getAdapter()).getItem(position));
     }
 
     @Override
