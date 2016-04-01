@@ -29,7 +29,7 @@ import retrofit.Retrofit;
 
 public class MyClassesActivity extends AppCompatActivity implements View.OnClickListener, Callback<Section>{
 
-    private FloatingActionButton addFAB;
+  //  private FloatingActionButton addFAB;
     private MyClassesListView listView;
     private Toolbar toolbar;
 
@@ -48,8 +48,8 @@ public class MyClassesActivity extends AppCompatActivity implements View.OnClick
 
         listView = (MyClassesListView) findViewById(R.id.listView);
 
-        addFAB = (FloatingActionButton) findViewById(R.id.fab);
-        addFAB.setOnClickListener(this);
+       // addFAB = (FloatingActionButton) findViewById(R.id.fab);
+       //addFAB.setOnClickListener(this);
 
         setSupportActionBar(toolbar);
 
@@ -108,7 +108,7 @@ public class MyClassesActivity extends AppCompatActivity implements View.OnClick
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-
+        Log.i("On options menu", "");
         if (item.getItemId() == android.R.id.home) {
             onBackPressed();
         }
