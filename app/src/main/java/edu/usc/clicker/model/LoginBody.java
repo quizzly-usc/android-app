@@ -12,8 +12,18 @@ public class LoginBody {
     @Expose
     private String password;
 
-    public LoginBody(String email, String password) {
+    @SerializedName("channelID")
+    @Expose
+    private String channelID;
+
+    @SerializedName("deviceType")
+    @Expose
+    private String deviceType;
+
+    public LoginBody(String email, String password, String channelID, String deviceType) {
         this.email = email;
         this.password = password;
+        this.channelID = channelID;
+        this.deviceType = deviceType;
     }
 }

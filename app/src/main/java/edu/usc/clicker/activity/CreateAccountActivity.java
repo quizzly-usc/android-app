@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 
 import com.squareup.okhttp.ResponseBody;
+import com.urbanairship.UAirship;
 
 import edu.usc.clicker.ClickerApplication;
 import edu.usc.clicker.R;
@@ -105,7 +106,9 @@ public class CreateAccountActivity extends AppCompatActivity implements Callback
                 finish();
             } else {
                 accountCreated = true;
-                ClickerApplication.CLICKER_API.login(new LoginBody(email.getText().toString(), password.getText().toString())).enqueue(this);
+                String channelId = UAirship.shared().getPushManager().getChannelId();
+                String deviceType = "android";
+                ClickerApplication.CLICKER_API.login(new LoginBody(email.getText().toString(), password.getText().toString(), channelId, deviceType)).enqueue(this);
             }
         } else {
             hideLoadingLayout();

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.urbanairship.UAirship;
 import com.urbanairship.push.BaseIntentReceiver;
 import com.urbanairship.push.PushMessage;
 
@@ -50,6 +51,7 @@ public class UrbanAirshipReceiver extends BaseIntentReceiver {
         Bundle b = message.getPushBundle();
         MultipleChoiceQuestion question = new MultipleChoiceQuestion(b); //populates question with data
         MultipleChoiceActivity.start(context, question); //start activity
+        String channelID = UAirship.shared().getPushManager().getChannelId();
         /*Intent i = new Intent();
         i.setClassName("com.test", "com.test.MainActivity");
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

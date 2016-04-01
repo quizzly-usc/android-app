@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 
 import com.squareup.okhttp.ResponseBody;
+import com.urbanairship.UAirship;
 
 import edu.usc.clicker.ClickerApplication;
 import edu.usc.clicker.R;
@@ -52,9 +53,11 @@ public class LoginActivity extends Activity implements View.OnClickListener, Cal
         } else if (password.getText().toString().isEmpty()) {
             password.setError("Please enter a password.");
         } else {
-            ClickerLog.d("LoginActivity", "Logging in...");
+            ClickerLog.d("LoginActivity1", "Logging in...");
             showLoadingLayout();
-            loginBody = new LoginBody(email.getText().toString(), password.getText().toString());
+            String channelId = UAirship.shared().getPushManager().getChannelId();
+            String deviceType = "android";
+            loginBody = new LoginBody(email.getText().toString(), password.getText().toString(), channelId, deviceType);
             ClickerApplication.CLICKER_API.login(loginBody).enqueue(this);
         }
     }
@@ -75,6 +78,8 @@ public class LoginActivity extends Activity implements View.OnClickListener, Cal
 
     @Override
     public void onResponse(Response<ResponseBody> response, Retrofit retrofit) {
+        ClickerLog.d("LoginActivity2", "Logging in...");
+      //  response.code();
         if (response.code() == 200) {
             ClickerApplication.LOGIN_HELPER.login(email.getText().toString(), password.getText().toString(), this);
             MainActivity.start(this);
