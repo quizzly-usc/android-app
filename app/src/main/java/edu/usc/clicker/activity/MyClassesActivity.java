@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -120,6 +121,7 @@ public class MyClassesActivity extends AppCompatActivity implements View.OnClick
                 .enqueue(new Callback<List<Section>>() {
                     @Override
                     public void onResponse(Response<List<Section>> response, Retrofit retrofit) {
+                        Log.i("onResponse", "");
                         ClickerApplication.SECTION_HELPER.removeAllSections();
                         ClickerApplication.SECTION_HELPER.addSections(response.body());
                     }

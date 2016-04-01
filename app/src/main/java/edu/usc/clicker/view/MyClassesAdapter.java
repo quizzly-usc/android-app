@@ -1,6 +1,7 @@
 package edu.usc.clicker.view;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,7 @@ public class MyClassesAdapter extends BaseAdapter implements Callback<List<Secti
 
     @Override
     public void onResponse(Response<List<Section>> response, Retrofit retrofit) {
+        Log.i("on response error", "error");
         sections.clear();
         if(!response.body().isEmpty())
         {

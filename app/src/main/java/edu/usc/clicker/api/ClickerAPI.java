@@ -28,7 +28,7 @@ public interface ClickerAPI {
     @GET("/user/")
     Call<User> getUser(@Query("id") int userID);
 
-    @GET("/user/classes/")
+    @GET("/student/getstudentcoursesbyemail/")
     Call<List<Section>> getUserSections(@Query("user") String email);
 
     @POST("/user/enroll/")

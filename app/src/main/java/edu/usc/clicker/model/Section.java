@@ -8,13 +8,13 @@ import com.google.gson.annotations.SerializedName;
 
 public class Section implements Parcelable {
 
-    @SerializedName("course_id")
+    @SerializedName("title")
     @Expose
     private String courseID;
     @SerializedName("section_id")
     @Expose
     private String sectionID;
-    @SerializedName("instructor")
+    @SerializedName("professor")
     @Expose
     private String instructor;
     @SerializedName("location")
