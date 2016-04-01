@@ -48,7 +48,10 @@ public class MyClassesAdapter extends BaseAdapter implements Callback<List<Secti
     @Override
     public void onResponse(Response<List<Section>> response, Retrofit retrofit) {
         sections.clear();
-        sections.addAll(response.body());
+        if(!response.body().isEmpty())
+        {
+            sections.addAll(response.body());
+        }
         notifyDataSetChanged();
     }
 
