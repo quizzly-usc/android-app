@@ -1,5 +1,6 @@
 package edu.usc.clicker.model;
 
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -76,6 +77,10 @@ public class FreeResponseQuestion implements Parcelable {
         this.expiration = in.readLong();
         this.timeLimit = in.readLong();
         this.type = in.readString();
+    }
+
+    public FreeResponseQuestion(Bundle b) {
+        this.question = b.getString("question");
     }
 
     public static final Parcelable.Creator<FreeResponseQuestion> CREATOR = new Parcelable.Creator<FreeResponseQuestion>() {

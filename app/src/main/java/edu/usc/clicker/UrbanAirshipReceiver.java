@@ -12,8 +12,10 @@ import com.urbanairship.push.PushMessage;
 import org.json.JSONObject;
 
 import edu.usc.clicker.activity.DummyActivity;
+import edu.usc.clicker.activity.FreeResponseActivity;
 import edu.usc.clicker.activity.MainActivity;
 import edu.usc.clicker.activity.MultipleChoiceActivity;
+import edu.usc.clicker.model.FreeResponseQuestion;
 import edu.usc.clicker.model.MultipleChoiceQuestion;
 
 /**
@@ -39,8 +41,16 @@ public class UrbanAirshipReceiver extends BaseIntentReceiver {
         Log.i("regular question", message.getPushBundle().getString("question"));
 
         Bundle b = message.getPushBundle();
-        MultipleChoiceQuestion question = new MultipleChoiceQuestion(b); //populates question with data
-        MultipleChoiceActivity.start(context, question); //start activity
+        String type = b.getString("type");
+
+        if(type.equals("multipleChoice")) {
+            MultipleChoiceQuestion question = new MultipleChoiceQuestion(b); //populates question with data
+            MultipleChoiceActivity.start(context, question); //start activity
+        } else {
+            FreeResponseQuestion question = new FreeResponseQuestion(b);
+            FreeResponseActivity.start(context, question);
+        }
+
     }
 
     @Override
@@ -51,7 +61,7 @@ public class UrbanAirshipReceiver extends BaseIntentReceiver {
         Bundle b = message.getPushBundle();
         MultipleChoiceQuestion question = new MultipleChoiceQuestion(b); //populates question with data
         MultipleChoiceActivity.start(context, question); //start activity
-        String channelID = UAirship.shared().getPushManager().getChannelId();
+
         /*Intent i = new Intent();
         i.setClassName("com.test", "com.test.MainActivity");
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
