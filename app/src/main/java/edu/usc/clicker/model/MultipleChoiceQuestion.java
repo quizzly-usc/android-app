@@ -128,6 +128,8 @@ public class MultipleChoiceQuestion implements Parcelable {
         this.type = b.getString("type");
         this.quizID = Integer.parseInt(b.getString("quiz_id"));
         this.id = Integer.parseInt(b.getString("quest_id"));
+        this.timeLimit= Integer.parseInt(b.getString("time_limit"));
+        this.timeLimit *= 1000;
 
         //Data from possible answers
         List<String> choices = new ArrayList<String>();
@@ -147,7 +149,6 @@ public class MultipleChoiceQuestion implements Parcelable {
 
         //random data - not sure if we need
         this.expiration = 1467402316;
-        this.timeLimit = 50000;
         this.pushHash = "some hash";
         this.showAnswers = true;
 
