@@ -18,9 +18,15 @@ public class FreeResponseQuestion implements Parcelable {
     @SerializedName("question")
     @Expose
     private String question;
+    @SerializedName("id")
+    @Expose
+    private int id;
     @SerializedName("expiration")
     @Expose
     private long expiration;
+    @SerializedName("quiz_id")
+    @Expose
+    private int quizId;
     @SerializedName("time_limit")
     @Expose
     private long timeLimit;
@@ -48,9 +54,13 @@ public class FreeResponseQuestion implements Parcelable {
         return timeLimit;
     }
 
+    public int getQuizId(){ return quizId; }
+
     public String getType() {
         return type;
     }
+
+    public int getId(){ return id;}
 
     @Override
     public int describeContents() {
@@ -81,6 +91,14 @@ public class FreeResponseQuestion implements Parcelable {
 
     public FreeResponseQuestion(Bundle b) {
         this.question = b.getString("question");
+        this.type = b.getString("type");
+        this.quizId = Integer.parseInt(b.getString("quiz_id"));
+        this.id = Integer.parseInt(b.getString("quest_id"));
+        this.expiration = 1467402316;
+        this.timeLimit = Integer.parseInt(b.getString("time_limit"));
+        timeLimit *= 1000;
+
+
     }
 
     public static final Parcelable.Creator<FreeResponseQuestion> CREATOR = new Parcelable.Creator<FreeResponseQuestion>() {

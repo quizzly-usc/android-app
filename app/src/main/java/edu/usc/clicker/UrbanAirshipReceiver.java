@@ -1,5 +1,6 @@
 package edu.usc.clicker;
 
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -46,9 +47,11 @@ public class UrbanAirshipReceiver extends BaseIntentReceiver {
         if(type.equals("multipleChoice")) {
             MultipleChoiceQuestion question = new MultipleChoiceQuestion(b); //populates question with data
             MultipleChoiceActivity.start(context, question); //start activity
+            return;
         } else {
             FreeResponseQuestion question = new FreeResponseQuestion(b);
             FreeResponseActivity.start(context, question);
+            return;
         }
 
     }
@@ -59,8 +62,22 @@ public class UrbanAirshipReceiver extends BaseIntentReceiver {
         Log.i("background question", message.getPushBundle().getString("question"));
 
         Bundle b = message.getPushBundle();
-        MultipleChoiceQuestion question = new MultipleChoiceQuestion(b); //populates question with data
-        MultipleChoiceActivity.start(context, question); //start activity
+
+        if(b.getString("type") == "multipleChoice") {
+            MultipleChoiceQuestion question = new MultipleChoiceQuestion(b);
+            MultipleChoiceActivity.start(context, question);
+          //  return true;
+        }
+        else if(b.getString("type") == "freeResponse") {
+            FreeResponseQuestion question = new FreeResponseQuestion(b);
+            FreeResponseActivity.start(context, question);
+            Log.i("FREE RESPONSE RECEIVED", "");
+        }
+
+        Log.i("Nothing Received type", "HERE");
+          //  return true;
+        //MultipleChoiceQuestion question = new MultipleChoiceQuestion(b); //populates question with data
+       // MultipleChoiceActivity.start(context, question); //start activity
 
         /*Intent i = new Intent();
         i.setClassName("com.test", "com.test.MainActivity");
@@ -72,7 +89,11 @@ public class UrbanAirshipReceiver extends BaseIntentReceiver {
     protected boolean onNotificationOpened(Context context, PushMessage message, int notificationId) {
         Log.i(TAG, "User clicked notification. Alert: " + message.getAlert());
         Log.i("question opened", message.getPushBundle().getString("question"));
+
         Bundle b = message.getPushBundle();
+
+        //NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        //notificationManager.cancel(notificationId);
 
         if (ClickerApplication.getShouldAutoLaunch()) {
             Log.i("question opened", "should auto launch");
@@ -80,9 +101,18 @@ public class UrbanAirshipReceiver extends BaseIntentReceiver {
             Log.i("question opened", "should NOT auto launch");
         }
         try {
-            MultipleChoiceQuestion question = new MultipleChoiceQuestion(b);
-            MultipleChoiceActivity.start(context, question);
-            return true;
+
+           if(b.getString("type") == "multipleChoice") {
+                   MultipleChoiceQuestion question = new MultipleChoiceQuestion(b);
+                   MultipleChoiceActivity.start(context, question);
+                   return true;
+               }
+               else if(b.getString("type") == "freeResponse"){
+                   FreeResponseQuestion question = new FreeResponseQuestion(b);
+                   FreeResponseActivity.start(context, question);
+                   Log.i("FREE RESPONSE RECEIVED", "");
+                   return true;
+           }
         }
         catch (Exception e) {
             Log.e("error", e.getMessage());

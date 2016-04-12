@@ -36,6 +36,7 @@ public class MultipleChoiceActivity extends ResponseActivity implements Timer.Ti
     }
 
     public static void start(Context context, MultipleChoiceQuestion question) {
+
         context.startActivity(getIntent(context, question));
     }
 

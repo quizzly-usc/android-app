@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.AppCompatButton;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,8 +21,11 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import edu.usc.clicker.ClickerApplication;
 import edu.usc.clicker.R;
+import edu.usc.clicker.model.AnswerResponse;
 import edu.usc.clicker.model.FreeResponseQuestion;
+import edu.usc.clicker.model.MultipleChoiceQuestion;
 import edu.usc.clicker.util.Timer;
 import edu.usc.clicker.view.TimerView;
 
@@ -93,7 +97,16 @@ public class FreeResponseActivity extends ResponseActivity implements Timer.Time
         content.animate().alpha(1.0f).translationY(0.0f).setInterpolator(new DecelerateInterpolator()).setDuration(700).start();
 
         timeRemaining.setListener(this);
-        timeRemaining.start((int) (question.getTimeLimit()/1000L));
+        int maxTime = (int) ((question.getExpiration() - System.currentTimeMillis()/1000L));
+        if (maxTime < question.getTimeLimit()/1000L) {
+            timeRemaining.start((int) ((question.getExpiration() - System.currentTimeMillis()) / 1000L));
+        } else {
+            timeRemaining.start((int) (question.getTimeLimit()/1000L));
+            Log.i("Timer value1: ", "" + question.getTimeLimit());
+        }
+
+
+       // timeRemaining.start((int) (question.getTimeLimit()/1000L));
 
         vibrator.vibrate(1000);
     }
@@ -185,6 +198,24 @@ public class FreeResponseActivity extends ResponseActivity implements Timer.Time
 
     @Override
     public void onClick(View v) {
-        Snackbar.make(root, "Answer submitted. You can still change your answer.", Snackbar.LENGTH_SHORT).show();
+        Log.i("OnClick", "Click received");
+        AnswerResponse answerResponse = new AnswerResponse();
+        answerResponse.setAnswer(answer.getText().toString());
+        answerResponse.setQuestionId(question.getId());
+        answerResponse.setUser(ClickerApplication.LOGIN_HELPER.getEmail(this));
+        if (ClickerApplication.getLocationHelper() != null && ClickerApplication.getLocationHelper().hasLocation()) {
+            answerResponse.setLocationBody(ClickerApplication.getLocationHelper().getBestLocation());
+        }
+        answerResponse.setQuizId(question.getQuizId());
+
+        Log.i("AR", "answer filled");
+
+
+
+        //ClickerApplication.CLICKER_API.answer(answerResponse).enqueue(this);
+        MultipleChoiceQuestion.answerQuestion(this, answerResponse);
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        this.startActivity(intent);
     }
 }
