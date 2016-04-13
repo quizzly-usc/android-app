@@ -1,11 +1,22 @@
 package edu.usc.clicker.model;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class FreeResponseQuestion implements Parcelable {
 
@@ -110,4 +121,33 @@ public class FreeResponseQuestion implements Parcelable {
             return new FreeResponseQuestion[size];
         }
     };
+
+    public static void answerQuestion(Context context, final AnswerResponse answer) {
+        RequestQueue queue = Volley.newRequestQueue(context);
+        String url = String.format("http://fontify.usc.edu/question/answer?qid=%1$d&question=%2$s", 1, "hi");
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                // Display the first 500 characters of the response string.
+                Log.i("answer", response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.i("answer error", "error");
+            }
+        }) {
+            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("quest_id", "" + answer.getQuestionId());
+                params.put("answer", answer.getAnswer());
+                params.put("user_email", answer.getUser());
+                params.put("quiz_id", "" + answer.getQuizId());
+                return params;
+            };
+        };
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
 }

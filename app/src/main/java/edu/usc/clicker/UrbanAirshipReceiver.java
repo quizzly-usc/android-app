@@ -45,10 +45,14 @@ public class UrbanAirshipReceiver extends BaseIntentReceiver {
         String type = b.getString("type");
 
         if(type.equals("multipleChoice")) {
+            NotificationManager notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+            notificationManager.cancel(notificationId);
             MultipleChoiceQuestion question = new MultipleChoiceQuestion(b); //populates question with data
             MultipleChoiceActivity.start(context, question); //start activity
             return;
         } else {
+            NotificationManager notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+            notificationManager.cancel(notificationId);
             FreeResponseQuestion question = new FreeResponseQuestion(b);
             FreeResponseActivity.start(context, question);
             return;
@@ -103,11 +107,15 @@ public class UrbanAirshipReceiver extends BaseIntentReceiver {
         try {
 
            if(b.getString("type") == "multipleChoice") {
+               NotificationManager notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+               notificationManager.cancel(notificationId);
                    MultipleChoiceQuestion question = new MultipleChoiceQuestion(b);
                    MultipleChoiceActivity.start(context, question);
                    return true;
                }
                else if(b.getString("type") == "freeResponse"){
+               NotificationManager notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+               notificationManager.cancel(notificationId);
                    FreeResponseQuestion question = new FreeResponseQuestion(b);
                    FreeResponseActivity.start(context, question);
                    Log.i("FREE RESPONSE RECEIVED", "");
