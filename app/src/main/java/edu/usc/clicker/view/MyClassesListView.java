@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,7 +33,8 @@ public class MyClassesListView extends ListView implements AdapterView.OnItemCli
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-       //StatisticsActivity.start(getContext(), ((MyClassesAdapter) getAdapter()).getItem(position));
+       StatisticsActivity.start(getContext(), ((MyClassesAdapter) getAdapter()).getItem(position));
+        Log.i("Course ID: ", String.valueOf(position));
     }
 
     @Override

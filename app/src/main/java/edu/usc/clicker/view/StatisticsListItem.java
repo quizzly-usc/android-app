@@ -14,7 +14,7 @@ public class StatisticsListItem extends LinearLayout {
 
     public void bindQuizStatistics(QuizStatistics quizStatistics) {
         quizName.setText(quizStatistics.getQuizName());
-        score.setText(Double.toString(Math.round(quizStatistics.getScore() * 100.0)/100.0) + "%");
+        score.setText(Double.toString(quizStatistics.getSectionId()));
     }
 
     public StatisticsListItem(Context context, AttributeSet attrs) {

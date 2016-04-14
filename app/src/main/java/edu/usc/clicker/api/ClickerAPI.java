@@ -2,10 +2,12 @@ package edu.usc.clicker.api;
 
 import com.squareup.okhttp.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.usc.clicker.model.AnswerResponse;
 import edu.usc.clicker.model.Course;
+import edu.usc.clicker.model.CourseInfo;
 import edu.usc.clicker.model.EnrollBody;
 import edu.usc.clicker.model.LoginBody;
 import edu.usc.clicker.model.QuizStatistics;
@@ -52,6 +54,6 @@ public interface ClickerAPI {
     @POST("/question/answer/")
     Call<ResponseBody> answer(@Body AnswerResponse answer);
 
-    @GET("/user/stats/")
-    Call<List<QuizStatistics>> getStats(@Query("user") String username, @Query("section_id") int sectionID);
+    @GET("/course/getCourseQuizzes")
+    Call<List<QuizStatistics>> getStats(@Query("id") int sectionID);
 }
