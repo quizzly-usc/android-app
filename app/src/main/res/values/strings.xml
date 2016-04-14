@@ -69,4 +69,5 @@
     <string name="quiz_notification_title">Your instructor has started a quiz</string>
     <string name="drop_section">Remove class</string>
     <string name="title_activity_dummy">DummyActivity</string>
+    <string name="title_activity_question">Question Activity</string>
 </resources>

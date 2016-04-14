@@ -13,6 +13,7 @@ import edu.usc.clicker.model.LoginBody;
 import edu.usc.clicker.model.QuizStatistics;
 import edu.usc.clicker.model.RegisterBody;
 import edu.usc.clicker.model.Section;
+import edu.usc.clicker.model.QuizQuestion;
 import edu.usc.clicker.model.User;
 import retrofit.Call;
 import retrofit.http.Body;
@@ -55,5 +56,8 @@ public interface ClickerAPI {
     Call<ResponseBody> answer(@Body AnswerResponse answer);
 
     @GET("/course/getCourseQuizzes")
-    Call<List<QuizStatistics>> getStats(@Query("id") int sectionID);
+    Call<List<QuizStatistics>> getStats(@Query("id")int id);
+
+    @GET("/quiz/getQuizQuestions")
+    Call<List<QuizQuestion>> getQuestions(@Query("id") int id);
 }

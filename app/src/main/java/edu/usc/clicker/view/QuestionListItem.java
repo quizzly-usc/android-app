@@ -6,18 +6,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import edu.usc.clicker.R;
+import edu.usc.clicker.model.QuizQuestion;
 import edu.usc.clicker.model.QuizStatistics;
 
-public class StatisticsListItem extends LinearLayout {
+public class QuestionListItem extends LinearLayout {
     private TextView quizName;
-    private TextView score;
+    //private TextView score;
 
-    public void bindQuizStatistics(QuizStatistics quizStatistics) {
-        quizName.setText(quizStatistics.getQuizName());
-        score.setText(Integer.toString(quizStatistics.getSectionId()));
+    public void bindQuizQuestions(QuizQuestion quizQuestions) {
+        quizName.setText(quizQuestions.getText());
+       // score.setText(Integer.toString(quizStatistics.getSectionId()));
     }
 
-    public StatisticsListItem(Context context, AttributeSet attrs) {
+    public QuestionListItem(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -26,6 +27,6 @@ public class StatisticsListItem extends LinearLayout {
         super.onFinishInflate();
 
         quizName = (TextView) findViewById(R.id.quizName);
-        score = (TextView) findViewById(R.id.score);
+        //score = (TextView) findViewById(R.id.score);
     }
 }

@@ -16,7 +16,7 @@ public class QuizStatistics implements Parcelable {
     private double courseId;
     @SerializedName("id")
     @Expose
-    private double sectionId;
+    private int sectionId;
     @SerializedName("createdAt")
     @Expose
     private String createdAt;
@@ -40,7 +40,7 @@ public class QuizStatistics implements Parcelable {
         this.courseId = courseId;
     }
 
-    public double getSectionId() {
+    public int getSectionId() {
         return sectionId;
     }
 
@@ -54,7 +54,7 @@ public class QuizStatistics implements Parcelable {
     }
 
 
-    public void setSectionId(double sectionId) {
+    public void setSectionId(int sectionId) {
         this.sectionId = sectionId;
     }
 
@@ -76,19 +76,22 @@ public class QuizStatistics implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.title);
         dest.writeDouble(this.courseId);
-        dest.writeDouble(this.sectionId);
+        dest.writeInt(this.sectionId);
         dest.writeString(this.createdAt);
         dest.writeString(this.updatedAt);
     }
     protected QuizStatistics(Parcel in) {
         this.title = in.readString();
         this.courseId = in.readDouble();
-        this.sectionId = in.readDouble();
+        this.sectionId = in.readInt();
         this.createdAt = in.readString();
         this.updatedAt = in.readString();
     //   this.id = in.readLong();
        // this.createdAt = in.readString();
        // this.updatedAt = in.readString();
+    }
+    public QuizStatistics(){
+
     }
     public static final Parcelable.Creator<QuizStatistics> CREATOR = new Parcelable.Creator<QuizStatistics>() {
         public QuizStatistics createFromParcel(Parcel source) {

@@ -64,9 +64,14 @@
             android:label="@string/statistics_title"
             android:theme="@style/StatisticsTheme" />
         <activity
+            android:name=".activity.QuestionActivity"
+            android:label="@string/title_activity_question"
+            android:theme="@style/StatisticsTheme"></activity>
+        <activity
             android:name=".activity.FOSSActivity"
             android:label="@string/foss_title"
             android:theme="@style/FOSSTheme" />
+
         <receiver
             android:name=".UrbanAirshipReceiver"
             android:exported="false">
@@ -97,7 +102,8 @@
         <activity
             android:name=".activity.DummyActivity"
             android:label="@string/title_activity_dummy"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+
     </application>
 
 </manifest>
