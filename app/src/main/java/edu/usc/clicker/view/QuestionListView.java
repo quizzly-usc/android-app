@@ -36,30 +36,30 @@ public class QuestionListView extends ListView implements AdapterView.OnItemClic
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-        Log.i("OnItemClick", "clicked");
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Log.i("OnItemClick: ", Integer.toString(position));
         QuizQuestion quizQuestion = ((QuestionViewAdapter) getAdapter()).getItem(position);
         id2 = quizQuestion.getQuestID();
         questionText = quizQuestion.getText();
-
         ClickerApplication.CLICKER_API.getStudentResponse(id2, ClickerApplication.LOGIN_HELPER.getEmail(getContext())).enqueue(new Callback<StudentResponse>() {
 
             @Override
             public void onResponse(Response<StudentResponse> response, Retrofit retrofit) {
                 StudentResponse sr = response.body();
-                QuestionAnswerActivity.start(getContext(), id2, questionText);
-               /* if (sr.getStudent_answer() > 0) {
+                Log.i("sr = ", Integer.toString(sr.getStudent_answer()));
+
+                if (sr.getStudent_answer() > 0) {
+                    QuestionAnswerActivity.start(getContext(), id2, questionText, 1);
                     answer = true;
 
-                }
-                else{
+                } else {
                     answer = false;
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Invalid: ")
+                            .setMessage("You have not answered this question yet!")
+                            .show();
                 }
-                new AlertDialog.Builder(getContext())
-                        .setTitle("Invalid: ")
-                        .setMessage("Answered " + sr.getStudent_answer())
-                        .show();
-                */
+
             }
 
             @Override
@@ -67,19 +67,6 @@ public class QuestionListView extends ListView implements AdapterView.OnItemClic
 
             }
         });
-       /* if (answer) {
-            new AlertDialog.Builder(getContext())
-                    .setTitle("Invalid: ")
-                    .setMessage("Answered")
-                    .show();
-        }
-        else {
-            new AlertDialog.Builder(getContext())
-                    .setTitle("Invalid: ")
-                    .setMessage("You have not answered this question yet!")
-                            .show();
-
-        }*/
     }
 }
 

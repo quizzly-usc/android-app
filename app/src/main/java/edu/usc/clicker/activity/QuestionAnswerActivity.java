@@ -1,5 +1,6 @@
 package edu.usc.clicker.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -50,25 +51,29 @@ public class QuestionAnswerActivity extends ResponseActivity implements Timer.Ti
     private TextView questionText;
     private Vibrator vibrator;
     private int questID;
+    private int answerStudent;
     private String TextQuestion;
     private List<AnswerOptions> answerOptions;
     private MultipleChoiceQuestion mcq;
     private List<String> answers;
+    private TextView titleCorrect;
+    private TextView titleStudent;
 
     public static void start(Context context) {
         Intent intent = new Intent(context, QuestionAnswerActivity.class);
         context.startActivity(intent);
     }
 
-    public static void start(Context context, int position, String quest) {
+    public static void start(Context context, int position, String quest, int sa) {
 
-        context.startActivity(getIntent(context, position, quest));
+        context.startActivity(getIntent(context, position, quest, sa));
     }
 
-    public static Intent getIntent(Context context, int position, String quest) {
+    public static Intent getIntent(Context context, int position, String quest, int student_answer) {
         Intent intent = new Intent(context, QuestionAnswerActivity.class);
         intent.putExtra("question", position);
         intent.putExtra("questionText", quest);
+        intent.putExtra("student_answer", student_answer);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         return intent;
     }
@@ -82,14 +87,17 @@ public class QuestionAnswerActivity extends ResponseActivity implements Timer.Ti
         answerOptions = new ArrayList<AnswerOptions>();
         questID = getIntent().getExtras().getInt("question");
         TextQuestion = getIntent().getExtras().getString("questionText");
+        answerStudent = getIntent().getExtras().getInt("student_answer");
 
         root = (LinearLayout) findViewById(R.id.root);
+        titleStudent= (TextView) findViewById(R.id.titleStudent);
+        titleCorrect = (TextView) findViewById(R.id.titleCorrect);
         content = (LinearLayout) findViewById(R.id.content);
         questionAnswerListView = (QuestionAnswerListView)findViewById(R.id.questionAnswerListView);
         //timerView = (TimerView) findViewById(R.id.timeRemaining);
         questionText = (TextView) findViewById(R.id.question);
-
         questionAnswerListView.setSelected(questID);
+        titleStudent.setText("Your Answer:  " + numberToLetter(answerStudent));;
         ClickerApplication.CLICKER_API.getAnswers(questID).enqueue(new Callback<List<AnswerOptions>>() {
 
             @Override
@@ -107,6 +115,9 @@ public class QuestionAnswerActivity extends ResponseActivity implements Timer.Ti
                 for (int i = 0; i < checker; i++) {
                     Log.i("answers", answerOptions.get(i).getText());
                     answers.add(answerOptions.get(i).getText());
+                    if("true" == answerOptions.get(i).getCorrect()){
+                        titleCorrect.setText("Correct: " + numberToLetter(i));
+                    }
                     Log.i("answers", Integer.toString(answers.size()));
                 }
                 mcq.setChoices(answers);
@@ -114,6 +125,8 @@ public class QuestionAnswerActivity extends ResponseActivity implements Timer.Ti
                 if (mcq != null) {
 
                     setQuestion(mcq);
+
+                    //letter.setBackgroundColor(Color.GREEN);
                 }
 
             }
@@ -136,7 +149,23 @@ public class QuestionAnswerActivity extends ResponseActivity implements Timer.Ti
         Log.i("mult-choice destroy", "why");
         ClickerApplication.getLocationHelper().setTrackLocation(false);
     }
-
+    private String numberToLetter(int id){
+        if(id == 1){
+            return "A";
+        }
+        else if(id == 2){
+            return "B";
+        }
+        else if(id == 3){
+            return "C";
+        }
+        else if(id == 4){
+            return "D";
+        }
+        else{
+            return "E";
+        }
+    }
     private void setQuestion(MultipleChoiceQuestion question) {
         content.setAlpha(1.0f);
         content.setTranslationY(getResources().getDisplayMetrics().heightPixels);

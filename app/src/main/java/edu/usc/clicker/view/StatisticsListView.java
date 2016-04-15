@@ -40,36 +40,6 @@ public class StatisticsListView extends ListView implements AdapterView.OnItemCl
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Log.i("Clicked", Integer.toString(position));
         QuizStatistics qs = (QuizStatistics) getAdapter().getItem(position);
-        /*
-        ClickerApplication.CLICKER_API.getStudentResponse((int) qs.getCourseId(), ClickerApplication.LOGIN_HELPER.getEmail(getContext())).enqueue(new Callback<StudentResponse>() {
-
-            @Override
-            public void onResponse(Response<StudentResponse> response, Retrofit retrofit) {
-                StudentResponse sr = response.body();
-                if (sr.getStudent_answer() > 0) {
-                    answer = true;
-                }
-                ;
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-
-            }
-        });
-        if (answer) {
-
-        }
-        else {
-            new AlertDialog.Builder(context)
-                    .setTitle("Invalid: ")
-                    .setMessage("You have not answered this question yet!")
-                            .show();
-        }*/
-        new AlertDialog.Builder(context)
-                .setTitle("Invalid: ")
-                .setMessage("Your selection: " + (int)qs.getSectionId())
-                .show();
         QuestionActivity.start(getContext(), (int) qs.getSectionId());
     }
 }

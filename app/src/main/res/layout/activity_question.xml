@@ -18,7 +18,6 @@
         android:layout_height="@dimen/toolbar_height"
         android:minHeight="@dimen/toolbar_height"
         android:layout_gravity="top"
-        android:title="@string/app_name"
-        />
+        android:title="@string/statistics_title"/>
 
 </FrameLayout>
