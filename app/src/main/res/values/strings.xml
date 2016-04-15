@@ -44,11 +44,14 @@
 
     <string name="current_class">Current Class:</string>
     <string name="create_account_title">Create an account</string>
-    <string name="create_account_description">To create an account, enter your USC email, student ID, and a password below.</string>
-    <string name="id_hint">USC student ID</string>
+    <string name="create_account_description">To create an account, enter your First and Last Name, USC email, and password.</string>
+    <string name="first_hint">First Name</string>
+    <string name="last_hint">Last Name</string>
     <string name="confirmPassword">Confirm password</string>
     <string name="create_account">CREATE ACCOUNT</string>
     <string name="showPassword">Show password</string>
+    <string name="first_invalid">Please enter a valid first name.</string>
+    <string name="last_invalid">Please enter a valid last name.</string>
     <string name="email_invalid">Please enter a valid USC email address.</string>
     <string name="student_id_invalid">Please enter a valid student ID.</string>
     <string name="password_invalid">Please enter a valid password at least 8 characters in length.</string>

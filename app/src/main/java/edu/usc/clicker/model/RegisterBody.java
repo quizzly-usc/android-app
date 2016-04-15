@@ -4,6 +4,14 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class  RegisterBody {
+    @SerializedName("firstName")
+    @Expose
+    private String firstName;
+
+    @SerializedName("lastName")
+    @Expose
+    private String lastName;
+
     @SerializedName("email")
     @Expose
     private String email;
@@ -12,13 +20,14 @@ public class  RegisterBody {
     @Expose
     private String password;
 
-    @SerializedName("usc_id")
+    @SerializedName("isProfessor")
     @Expose
-    private long uscID;
+    private String isProfessor;
 
-    public RegisterBody(String email, String password, long uscID) {
+    public RegisterBody(String firstName, String lastName, String email, String password, String isProfessor) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.uscID = uscID;
     }
 }
