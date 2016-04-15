@@ -52,6 +52,8 @@ public class QuestionAnswerActivity extends ResponseActivity implements Timer.Ti
     private int questID;
     private String TextQuestion;
     private List<AnswerOptions> answerOptions;
+    private MultipleChoiceQuestion mcq;
+    private List<String> answers;
 
     public static void start(Context context) {
         Intent intent = new Intent(context, QuestionAnswerActivity.class);
@@ -78,7 +80,7 @@ public class QuestionAnswerActivity extends ResponseActivity implements Timer.Ti
 
         vibrator = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
         answerOptions = new ArrayList<AnswerOptions>();
-                questID= getIntent().getExtras().getInt("question");
+        questID = getIntent().getExtras().getInt("question");
         TextQuestion = getIntent().getExtras().getString("questionText");
 
         root = (LinearLayout) findViewById(R.id.root);
@@ -95,27 +97,34 @@ public class QuestionAnswerActivity extends ResponseActivity implements Timer.Ti
 
                 Log.i("Responded: ", "response");
                 answerOptions.addAll(response.body());
+                Log.i("answers ", "here");
+                mcq = new MultipleChoiceQuestion();
+                mcq.setQuestion(TextQuestion);
+                mcq.setShowAnswers(true);
+                answers = new ArrayList<String>();
+                int checker = answerOptions.size();
+                Log.i("answers", Integer.toString(checker));
+                for (int i = 0; i < checker; i++) {
+                    Log.i("answers", answerOptions.get(i).getText());
+                    answers.add(answerOptions.get(i).getText());
+                    Log.i("answers", Integer.toString(answers.size()));
+                }
+                mcq.setChoices(answers);
+
+                if (mcq != null) {
+
+                    setQuestion(mcq);
+                }
 
             }
 
             @Override
             public void onFailure(Throwable t) {
 
+
             }
         });
-        MultipleChoiceQuestion mcq = new MultipleChoiceQuestion();
-        mcq.setQuestion(TextQuestion);
-        List<String> answers = new ArrayList<String>();
-        int checker = answerOptions.size();
-        for(int i = 0; i < checker; i++){
-            answers.add(answerOptions.get(i).getText());
-        }
-        mcq.setChoices(answers);
 
-        if (mcq != null) {
-
-            setQuestion(mcq);
-        }
         Log.i("mult-choice create", "end");
         ClickerApplication.getLocationHelper().setTrackLocation(true);
 

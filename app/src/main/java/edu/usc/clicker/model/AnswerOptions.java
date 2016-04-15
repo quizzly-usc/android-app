@@ -18,7 +18,7 @@ public class AnswerOptions implements Parcelable {
     private String correct;
     @SerializedName("option")
     @Expose
-    private String option;
+    private Boolean option;
     @SerializedName("question")
     @Expose
     private int questID;
@@ -41,7 +41,7 @@ public class AnswerOptions implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.text);
         dest.writeString(this.correct);
-        dest.writeString(this.option);
+        dest.writeByte((byte) (option ? 1 : 0));
         dest.writeInt(this.questID);
         dest.writeInt(this.answerID);
         dest.writeString(this.createdAt);
@@ -54,7 +54,7 @@ public class AnswerOptions implements Parcelable {
     protected AnswerOptions(Parcel in) {
         this.text = in.readString();
         this.correct = in.readString();
-        this.option = in.readString();
+        this.option = in.readByte() != 0;
         this.questID = in.readInt();
         this.answerID = in.readInt();
         this.createdAt = in.readString();
@@ -87,11 +87,11 @@ public class AnswerOptions implements Parcelable {
         this.correct = correct;
     }
 
-    public String getOption() {
+    public Boolean getOption() {
         return option;
     }
 
-    public void setOption(String option) {
+    public void setOption(Boolean option) {
         this.option = option;
     }
 

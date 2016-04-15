@@ -8,7 +8,7 @@
 
     <string name="email">USC email</string>
     <string name="password">Password</string>
-
+    <string name="title_activity_question_answer"> </string>
     <string name="welcome_title">Welcome to Quizzly</string>
     <string name="welcome_description">To use Quizzly, you need a Quizzly account. You can either create an account or login with an existing one.</string>
     <string name="welcome_new_account">CREATE AN ACCOUNT</string>
