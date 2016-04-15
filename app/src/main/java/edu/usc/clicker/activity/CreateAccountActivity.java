@@ -77,7 +77,7 @@ public class CreateAccountActivity extends AppCompatActivity implements Callback
                     Snackbar.make(findViewById(android.R.id.content), R.string.email_invalid, Snackbar.LENGTH_LONG).show();
                 } else if (!email.getText().toString().contains("@usc.edu")) {
                     Snackbar.make(findViewById(android.R.id.content), R.string.email_invalid, Snackbar.LENGTH_LONG).show();
-                } else if (password.length() < 8) {
+                } else if (password.length() < 4) {
                     Snackbar.make(findViewById(android.R.id.content), R.string.password_invalid, Snackbar.LENGTH_LONG).show();
                 } else if (!password.getText().toString().equals(confirmPassword.getText().toString())) {
                     Snackbar.make(findViewById(android.R.id.content), R.string.passwords_dont_match, Snackbar.LENGTH_LONG).show();

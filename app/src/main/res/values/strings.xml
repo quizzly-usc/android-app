@@ -54,7 +54,7 @@
     <string name="last_invalid">Please enter a valid last name.</string>
     <string name="email_invalid">Please enter a valid USC email address.</string>
     <string name="student_id_invalid">Please enter a valid student ID.</string>
-    <string name="password_invalid">Please enter a valid password at least 8 characters in length.</string>
+    <string name="password_invalid">Please enter a valid password at least 4 characters in length.</string>
     <string name="passwords_dont_match">Passwords don\'t match.</string>
     <string name="addClassDialogTitle">Add a class</string>
     <string name="addClassCancel">Cancel</string>
