@@ -182,6 +182,10 @@ public class MultipleChoiceQuestion implements Parcelable {
 
             if(b.getString("answer3") != null) {
                 choices.add(b.getString("answer3"));
+
+                if(b.getString("answer4") != null) {
+                    choices.add(b.getString("answer4"));
+                }
             }
         }
 

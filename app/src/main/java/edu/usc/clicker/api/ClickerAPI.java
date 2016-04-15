@@ -24,7 +24,7 @@ import retrofit.http.POST;
 import retrofit.http.Query;
 
 public interface ClickerAPI {
-    @POST("/auth/register/")
+    @POST("/auth/signup/")
     Call<ResponseBody> register(@Body RegisterBody registerBody);
 
     @POST("/auth/login/")

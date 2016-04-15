@@ -29,8 +29,9 @@ import retrofit.Retrofit;
 
 public class CreateAccountActivity extends AppCompatActivity implements Callback<ResponseBody> {
 
+    private EditText first;
+    private EditText last;
     private EditText email;
-    private EditText studentID;
     private EditText password;
     private EditText confirmPassword;
     private AppCompatButton createAccount;
@@ -56,8 +57,9 @@ public class CreateAccountActivity extends AppCompatActivity implements Callback
 
         setContentView(R.layout.activity_create_account);
 
+        first = (EditText) findViewById(R.id.first);
+        last = (EditText) findViewById(R.id.last);
         email = (EditText) findViewById(R.id.email);
-        studentID = (EditText) findViewById(R.id.id);
         password = (EditText) findViewById(R.id.password);
         confirmPassword = (EditText) findViewById(R.id.confirmPassword);
         createAccount = (AppCompatButton) findViewById(R.id.createAccount);
@@ -67,13 +69,15 @@ public class CreateAccountActivity extends AppCompatActivity implements Callback
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (email.length() == 0) {
+                if(first.length() == 0) {
+                    Snackbar.make(findViewById(android.R.id.content), R.string.first_invalid, Snackbar.LENGTH_LONG).show();
+                } else if(last.length() == 0) {
+                    Snackbar.make(findViewById(android.R.id.content), R.string.last_invalid, Snackbar.LENGTH_LONG).show();
+                } else if (email.length() == 0) {
                     Snackbar.make(findViewById(android.R.id.content), R.string.email_invalid, Snackbar.LENGTH_LONG).show();
                 } else if (!email.getText().toString().contains("@usc.edu")) {
                     Snackbar.make(findViewById(android.R.id.content), R.string.email_invalid, Snackbar.LENGTH_LONG).show();
-                } else if (studentID.length() != 10) {
-                    Snackbar.make(findViewById(android.R.id.content), R.string.student_id_invalid, Snackbar.LENGTH_LONG).show();
-                } else if (password.length() < 8) {
+                } else if (password.length() < 4) {
                     Snackbar.make(findViewById(android.R.id.content), R.string.password_invalid, Snackbar.LENGTH_LONG).show();
                 } else if (!password.getText().toString().equals(confirmPassword.getText().toString())) {
                     Snackbar.make(findViewById(android.R.id.content), R.string.passwords_dont_match, Snackbar.LENGTH_LONG).show();
@@ -123,7 +127,7 @@ public class CreateAccountActivity extends AppCompatActivity implements Callback
 
     private void createAccount() {
         showLoadingLayout();
-        ClickerApplication.CLICKER_API.register(new RegisterBody(email.getText().toString(), password.getText().toString(), Long.parseLong(studentID.getText().toString()))).enqueue(this);
+        ClickerApplication.CLICKER_API.register(new RegisterBody(first.getText().toString(), last.getText().toString(),email.getText().toString(), password.getText().toString(), "false")).enqueue(this);
     }
 
     private void showLoadingLayout() {
