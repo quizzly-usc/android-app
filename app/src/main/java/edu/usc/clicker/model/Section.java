@@ -28,7 +28,7 @@ public class Section implements Parcelable {
     private String endTime;
     @SerializedName("id")
     @Expose
-    private long id;
+    private int id;
     @SerializedName("createdAt")
     @Expose
     private String createdAt;
@@ -84,11 +84,11 @@ public class Section implements Parcelable {
         this.endTime = endTime;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -136,7 +136,7 @@ public class Section implements Parcelable {
         this.location = in.readParcelable(Object.class.getClassLoader());
         this.startTime = in.readString();
         this.endTime = in.readString();
-        this.id = in.readLong();
+        this.id = in.readInt();
         this.createdAt = in.readString();
         this.updatedAt = in.readString();
     }
