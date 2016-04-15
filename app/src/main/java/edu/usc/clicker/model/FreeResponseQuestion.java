@@ -124,7 +124,7 @@ public class FreeResponseQuestion implements Parcelable {
 
     public static void answerQuestion(Context context, final AnswerResponse answer) {
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = String.format("http://fontify.usc.edu/question/answer?qid=%1$d&question=%2$s", 1, "hi");
+        String url = String.format("http://fontify.usc.edu/question/answerFreeResponse");
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
