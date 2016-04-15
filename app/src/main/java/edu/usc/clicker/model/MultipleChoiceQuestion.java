@@ -49,6 +49,47 @@ public class MultipleChoiceQuestion implements Parcelable {
     @SerializedName("show_answers")
     @Expose
     private boolean showAnswers;
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public void setChoices(List<String> choices) {
+        this.choices = choices;
+    }
+
+    public void setPushHash(String pushHash) {
+        this.pushHash = pushHash;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public void setExpiration(long expiration) {
+        this.expiration = expiration;
+    }
+
+    public void setTimeLimit(long timeLimit) {
+        this.timeLimit = timeLimit;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setShowAnswers(boolean showAnswers) {
+        this.showAnswers = showAnswers;
+    }
+
+    public void setQuizID(int quizID) {
+        this.quizID = quizID;
+    }
+
     @SerializedName("quiz_id")
     @Expose
     public int quizID;

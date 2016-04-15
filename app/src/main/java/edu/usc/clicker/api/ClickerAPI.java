@@ -5,6 +5,7 @@ import com.squareup.okhttp.ResponseBody;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.usc.clicker.model.AnswerOptions;
 import edu.usc.clicker.model.AnswerResponse;
 import edu.usc.clicker.model.Course;
 import edu.usc.clicker.model.CourseInfo;
@@ -14,6 +15,7 @@ import edu.usc.clicker.model.QuizStatistics;
 import edu.usc.clicker.model.RegisterBody;
 import edu.usc.clicker.model.Section;
 import edu.usc.clicker.model.QuizQuestion;
+import edu.usc.clicker.model.StudentResponse;
 import edu.usc.clicker.model.User;
 import retrofit.Call;
 import retrofit.http.Body;
@@ -60,4 +62,10 @@ public interface ClickerAPI {
 
     @GET("/quiz/getQuizQuestions")
     Call<List<QuizQuestion>> getQuestions(@Query("id") int id);
+
+    @GET("/question/getQuestionAndUserAnswer")
+    Call<StudentResponse> getStudentResponse(@Query("question") int id, @Query("student") String email);
+
+    @GET("/question/getQuestionAnswers")
+    Call <List<AnswerOptions> > getAnswers (@Query("question") int id);
 }

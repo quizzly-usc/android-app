@@ -66,7 +66,7 @@
         <activity
             android:name=".activity.QuestionActivity"
             android:label="@string/title_activity_question"
-            android:theme="@style/StatisticsTheme"></activity>
+            android:theme="@style/StatisticsTheme" />
         <activity
             android:name=".activity.FOSSActivity"
             android:label="@string/foss_title"
@@ -103,7 +103,10 @@
             android:name=".activity.DummyActivity"
             android:label="@string/title_activity_dummy"
             android:theme="@style/AppTheme" />
-
+        <activity
+            android:name=".activity.QuestionAnswerActivity"
+            android:label="@string/title_activity_question_answer"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

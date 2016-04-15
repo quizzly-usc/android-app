@@ -7,15 +7,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import edu.usc.clicker.ClickerApplication;
 import edu.usc.clicker.R;
 import edu.usc.clicker.model.QuizQuestion;
     import edu.usc.clicker.model.Section;
-    import edu.usc.clicker.util.ClickerLog;
+import edu.usc.clicker.model.StudentResponse;
+import edu.usc.clicker.util.ClickerLog;
     import edu.usc.clicker.view.QuestionListView;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
-    public class QuestionActivity extends AppCompatActivity {
+public class QuestionActivity extends AppCompatActivity implements Callback<StudentResponse> {
 
     public static void start(Context context, int quizID) {
+        //ClickerApplication.CLICKER_API.getStudentResponse(quizID, )
         Intent intent = new Intent(context, QuestionActivity.class);
         intent.putExtra("question", quizID);
         context.startActivity(intent);
@@ -55,6 +61,16 @@ import edu.usc.clicker.model.QuizQuestion;
         QuestionListView listView = (QuestionListView) findViewById(R.id.listView);
 
         listView.setSection(questID);
+    }
+
+    @Override
+    public void onResponse(Response<StudentResponse> response, Retrofit retrofit) {
+
+    }
+
+    @Override
+    public void onFailure(Throwable t) {
+
     }
 }
 

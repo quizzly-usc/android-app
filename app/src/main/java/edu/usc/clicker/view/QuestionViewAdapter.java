@@ -32,7 +32,7 @@ public class QuestionViewAdapter extends BaseAdapter implements Callback <List<Q
     }
 
     @Override
-    public Object getItem(int position) {
+    public QuizQuestion getItem(int position) {
         return questions.get(position);
     }
 

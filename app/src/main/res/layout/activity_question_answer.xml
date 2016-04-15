@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.QuestionAnswerActivity"
+    android:background="@drawable/main_background_color" >
+
+    <FrameLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height">
+
+        <TextView android:id="@+id/title"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:layout_margin="16dp"
+            android:text="Bull"
+            android:textColor="#000000"
+            style="@style/Base.TextAppearance.AppCompat.Title" />
+
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            tools:text="@string/sample_multiple_choice"
+            android:textColor="#000000"
+            style="@style/Base.TextAppearance.AppCompat.Headline"
+            android:gravity="center" />
+
+        <edu.usc.clicker.view.QuestionAnswerListView
+            android:id="@+id/questionAnswerListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/question_answer_item"/>
+    </LinearLayout>
+
+</LinearLayout>
