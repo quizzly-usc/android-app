@@ -51,7 +51,8 @@ public class QuestionAnswerActivity extends ResponseActivity implements Timer.Ti
     private TextView questionText;
     private Vibrator vibrator;
     private int questID;
-    private int answerStudent;
+    private String answerStudent;
+    private String answerCorrect;
     private String TextQuestion;
     private List<AnswerOptions> answerOptions;
     private MultipleChoiceQuestion mcq;
@@ -64,16 +65,17 @@ public class QuestionAnswerActivity extends ResponseActivity implements Timer.Ti
         context.startActivity(intent);
     }
 
-    public static void start(Context context, int position, String quest, int sa) {
+    public static void start(Context context, int position, String quest, String sa, String correct) {
 
-        context.startActivity(getIntent(context, position, quest, sa));
+        context.startActivity(getIntent(context, position, quest, sa, correct));
     }
 
-    public static Intent getIntent(Context context, int position, String quest, int student_answer) {
+    public static Intent getIntent(Context context, int position, String quest, String student_answer, String correct_answer) {
         Intent intent = new Intent(context, QuestionAnswerActivity.class);
         intent.putExtra("question", position);
         intent.putExtra("questionText", quest);
         intent.putExtra("student_answer", student_answer);
+        intent.putExtra("correct_answer", correct_answer);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         return intent;
     }
@@ -87,7 +89,8 @@ public class QuestionAnswerActivity extends ResponseActivity implements Timer.Ti
         answerOptions = new ArrayList<AnswerOptions>();
         questID = getIntent().getExtras().getInt("question");
         TextQuestion = getIntent().getExtras().getString("questionText");
-        answerStudent = getIntent().getExtras().getInt("student_answer");
+        answerStudent = getIntent().getExtras().getString("student_answer");
+        answerCorrect = getIntent().getExtras().getString("correct_answer");
 
         root = (LinearLayout) findViewById(R.id.root);
         titleStudent= (TextView) findViewById(R.id.titleStudent);
@@ -97,7 +100,8 @@ public class QuestionAnswerActivity extends ResponseActivity implements Timer.Ti
         //timerView = (TimerView) findViewById(R.id.timeRemaining);
         questionText = (TextView) findViewById(R.id.question);
         questionAnswerListView.setSelected(questID);
-        titleStudent.setText("Your Answer:  " + numberToLetter(answerStudent));;
+        titleStudent.setText("Your Answer:  " + answerStudent);
+        titleCorrect.setText("Correct: " + answerCorrect);
         ClickerApplication.CLICKER_API.getAnswers(questID).enqueue(new Callback<List<AnswerOptions>>() {
 
             @Override
@@ -116,7 +120,7 @@ public class QuestionAnswerActivity extends ResponseActivity implements Timer.Ti
                     Log.i("answers", answerOptions.get(i).getText());
                     answers.add(answerOptions.get(i).getText());
                     if("true" == answerOptions.get(i).getCorrect()){
-                        titleCorrect.setText("Correct: " + numberToLetter(i));
+                  //      titleCorrect.setText("Correct: " + numberToLetter(i));
                     }
                     Log.i("answers", Integer.toString(answers.size()));
                 }

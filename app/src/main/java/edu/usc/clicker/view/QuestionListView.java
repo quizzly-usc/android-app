@@ -46,10 +46,10 @@ public class QuestionListView extends ListView implements AdapterView.OnItemClic
             @Override
             public void onResponse(Response<StudentResponse> response, Retrofit retrofit) {
                 StudentResponse sr = response.body();
-                Log.i("sr = ", Integer.toString(sr.getStudent_answer()));
+                Log.i("sr = ", sr.getStudent_answer());
 
-                if (sr.getStudent_answer() > 0) {
-                    QuestionAnswerActivity.start(getContext(), id2, questionText, 1);
+                if (sr.getStudent_answer().length() > 0) {
+                    QuestionAnswerActivity.start(getContext(), id2, questionText, sr.getStudent_answer(), sr.getCorrectAnswer());
                     answer = true;
 
                 } else {

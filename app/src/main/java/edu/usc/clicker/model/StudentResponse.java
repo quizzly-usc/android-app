@@ -15,13 +15,16 @@ public class StudentResponse implements Parcelable {
     private String questionText;
     @SerializedName("student_answer")
     @Expose
-    private int student_answer;
+    private String student_answer;
+    @SerializedName("correct_answer")
+    @Expose
+    private String correct_answer;
 
-    public int getStudent_answer() {
+    public String getStudent_answer() {
         return student_answer;
     }
 
-    public void setStudent_answer(int student_answer) {
+    public void setStudent_answer(String student_answer) {
         this.student_answer = student_answer;
     }
 
@@ -33,6 +36,14 @@ public class StudentResponse implements Parcelable {
         this.questionText = questionText;
     }
 
+    public String getCorrectAnswer() {
+        return correct_answer;
+    }
+
+    public void setCorrectAnswer(String c) {
+        this.correct_answer = c;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -41,15 +52,16 @@ public class StudentResponse implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.questionText);
-        dest.writeInt(this.student_answer);
+        dest.writeString(this.student_answer);
+        dest.writeString(this.correct_answer);
     }
     public StudentResponse() {
     }
 
     protected StudentResponse(Parcel in) {
         this.questionText = in.readString();
-        this.student_answer = in.readInt();
-
+        this.student_answer = in.readString();
+        this.correct_answer = in.readString();
     }
 
     public static final Parcelable.Creator<StudentResponse> CREATOR = new Parcelable.Creator<StudentResponse>() {

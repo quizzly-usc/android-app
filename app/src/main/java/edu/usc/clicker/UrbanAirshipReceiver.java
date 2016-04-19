@@ -21,6 +21,9 @@ import edu.usc.clicker.model.MultipleChoiceQuestion;
 
 /**
  * Created by markk_000 on 3/4/2016.
+ *
+ * This class listens for UrbanAirship push notifications
+ *
  */
 public class UrbanAirshipReceiver extends BaseIntentReceiver {
 
@@ -36,6 +39,7 @@ public class UrbanAirshipReceiver extends BaseIntentReceiver {
         Log.i(TAG, "Channel registration failed.");
     }
 
+    //Question activity is automatically started when you receive a push notificaiton
     @Override
     protected void onPushReceived(Context context, PushMessage message, int notificationId) {
         Log.i(TAG, "Received push notification. Alert: " + message.getAlert() + ". Notification ID: " + notificationId);
